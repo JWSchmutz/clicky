@@ -1,55 +1,58 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import ClickableImage from "./components/LuckyImage";
 
-class App extends Component {
-  state = {
-    wins: 0,
-    losses: 0,
-    alreadyClicked: [],
-    images: [
-      { name: "horseshoe", src: require("./images/horseshoe.png") },
-      { name: "rainbow", src: require("./images/rainbow.png") },
-      { name: "clover", src: require("./images/clover.png") },
-    ],
-  };
+const App = () => {
+  const [wins, setWins] = useState(0);
+  const [losses, setLosses] = useState(0);
+  const [alreadyClicked, setalreadyClicked] = useState([]);
+  const [images, setImages] = useState([
+    { name: "davis", src: require("./images/davis.jpg") },
+    { name: "durant", src: require("./images/durant.jpg") },
+    { name: "giannis", src: require("./images/giannis.jpg") },
+    { name: "harden", src: require("./images/harden.jpg") },
+    { name: "kawhi", src: require("./images/kawhi.jpg") },
+    { name: "lebron", src: require("./images/lebron.jpg") },
+    { name: "luka", src: require("./images/luka.jpg") },
+    { name: "stephen", src: require("./images/stephen.jpg") },
+  ]);
 
-  handleClick = (name) => {
-    this.state.images.sort((a, b) => 0.5 - Math.random());
-    if (this.state.alreadyClicked.includes(name)) {
-      this.setState({ losses: this.state.losses + 1 });
+  const handleClick = (name) => {
+    const newImages = images.sort((a, b) => 0.5 - Math.random());
+    setImages(newImages);
+    if (alreadyClicked.includes(name)) {
+      setLosses(losses + 1);
     } else {
-      const newAlreadyClicked = this.state.alreadyClicked;
+      const newAlreadyClicked = [...alreadyClicked];
       newAlreadyClicked.push(name);
-      if (newAlreadyClicked.length === this.state.images.length) {
-        this.setState({ wins: this.state.wins + 1, alreadyClicked: [] });
+      if (newAlreadyClicked.length === images.length) {
+        setWins(wins + 1);
+        setalreadyClicked([]);
       } else {
-        this.setState({ alreadyClicked: newAlreadyClicked });
+        setalreadyClicked(newAlreadyClicked);
       }
     }
   };
 
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1> Memory Game!</h1>
-          <h2>Click each picture exactly one time to win!</h2>
-          <h3>Wins: {this.state.wins}</h3>
-          <h3>Losses: {this.state.losses}</h3>
-          <div>
-            {this.state.images.map((image) => (
-              <ClickableImage
-                image={image.src}
-                key={image.name}
-                onClick={() => this.handleClick(image.name)}
-              />
-            ))}
-          </div>
-        </header>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="App">
+      <header className="App-header">
+        <h1> Memory Game!</h1>
+        <h2>Click each picture exactly one time to win!</h2>
+        <h3>Wins: {wins}</h3>
+        <h3>Losses: {losses}</h3>
+        <div>
+          {images.map((image) => (
+            <ClickableImage
+              image={image.src}
+              key={image.name}
+              onClick={() => handleClick(image.name)}
+            />
+          ))}
+        </div>
+      </header>
+    </div>
+  );
+};
 
 export default App;
