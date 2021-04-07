@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import LuckyImage from "./components/LuckyImage";
+import ClickableImage from "./components/LuckyImage";
 
 class App extends Component {
   state = {
@@ -10,11 +10,11 @@ class App extends Component {
     images: [
       { name: "horseshoe", src: require("./images/horseshoe.png") },
       { name: "rainbow", src: require("./images/rainbow.png") },
-      { name: "clover", src: require("./images/clover.png") }
-    ]
+      { name: "clover", src: require("./images/clover.png") },
+    ],
   };
 
-  handleClick = name => {
+  handleClick = (name) => {
     this.state.images.sort((a, b) => 0.5 - Math.random());
     if (this.state.alreadyClicked.includes(name)) {
       this.setState({ losses: this.state.losses + 1 });
@@ -33,12 +33,13 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1> Lucky Game!</h1>
+          <h1> Memory Game!</h1>
+          <h2>Click each picture exactly one time to win!</h2>
           <h3>Wins: {this.state.wins}</h3>
           <h3>Losses: {this.state.losses}</h3>
           <div>
-            {this.state.images.map(image => (
-              <LuckyImage
+            {this.state.images.map((image) => (
+              <ClickableImage
                 image={image.src}
                 key={image.name}
                 onClick={() => this.handleClick(image.name)}
