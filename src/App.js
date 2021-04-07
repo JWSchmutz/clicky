@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import "./App.css";
 import ClickableImage from "./components/LuckyImage";
+import players from "./data";
+
+const statePlayers = players.map((player) => ({
+  name: player,
+  src: require(`./images/${player}.jpg`),
+}));
 
 const App = () => {
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
   const [alreadyClicked, setalreadyClicked] = useState([]);
-  const [images, setImages] = useState([
-    { name: "davis", src: require("./images/davis.jpg") },
-    { name: "durant", src: require("./images/durant.jpg") },
-    { name: "giannis", src: require("./images/giannis.jpg") },
-    { name: "harden", src: require("./images/harden.jpg") },
-    { name: "kawhi", src: require("./images/kawhi.jpg") },
-    { name: "lebron", src: require("./images/lebron.jpg") },
-    { name: "luka", src: require("./images/luka.jpg") },
-    { name: "stephen", src: require("./images/stephen.jpg") },
-  ]);
+  const [images, setImages] = useState(statePlayers);
 
   const handleClick = (name) => {
     const newImages = images.sort((a, b) => 0.5 - Math.random());
