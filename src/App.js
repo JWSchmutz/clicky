@@ -19,6 +19,7 @@ const App = () => {
     setImages(newImages);
     if (alreadyClicked.includes(name)) {
       setLosses(losses + 1);
+      setalreadyClicked([]);
     } else {
       const newAlreadyClicked = [...alreadyClicked];
       newAlreadyClicked.push(name);
