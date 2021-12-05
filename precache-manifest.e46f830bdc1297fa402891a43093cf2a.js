@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c4f49af2b13b555eb8ef39e667a5f1c0",
+    "revision": "e7dc71b250a8481a1d9b4714c6d7aa04",
     "url": "/clicky/index.html"
   },
   {
-    "revision": "5e918f70f98f445839fd",
-    "url": "/clicky/static/css/main.f6c3c3a2.chunk.css"
+    "revision": "6486451022af41087534",
+    "url": "/clicky/static/css/main.df25c770.chunk.css"
   },
   {
-    "revision": "ddb3942de7276520549d",
-    "url": "/clicky/static/js/2.c80fa807.chunk.js"
+    "revision": "b7db28ea76820fcec6cd",
+    "url": "/clicky/static/js/2.1700b8f0.chunk.js"
   },
   {
-    "revision": "5e918f70f98f445839fd",
-    "url": "/clicky/static/js/main.8a0d3368.chunk.js"
+    "revision": "6486451022af41087534",
+    "url": "/clicky/static/js/main.f3155b5a.chunk.js"
   },
   {
-    "revision": "48fb82b10597630f3b6b",
-    "url": "/clicky/static/js/runtime~main.0d6b5fa3.js"
+    "revision": "cab3982be7587a08bb34",
+    "url": "/clicky/static/js/runtime~main.9b7b4012.js"
   },
   {
     "revision": "f7a32113a2691c8931618392a4940d36",
